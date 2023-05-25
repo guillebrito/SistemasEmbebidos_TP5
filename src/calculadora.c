@@ -36,9 +36,24 @@ SPDX-License-Identifier: MIT
 
 /* === Macros definitions ====================================================================== */
 
+#ifndef OPERACIONES
+#define OPERACIONES 4
+#endif
+
 /* === Private data type declarations ========================================================== */
 
+typedef struct operacion_s
+{
+    char operador;
+    funciont_t funcion;
+} * operacion_t;
+
 /* === Private variable declarations =========================================================== */
+
+struct calculadora_s
+{
+    struct operacion_s operaciones[OPERACIONES];
+};
 
 /* === Private function declarations =========================================================== */
 
@@ -46,7 +61,72 @@ SPDX-License-Identifier: MIT
 
 /* === Private variable definitions ============================================================ */
 
+operacion_t BuscarOperacion(calculadora_t calculadora, char operador)
+{
+    operacion_t operacion = NULL;
+
+    for (int i = 0; i < OPERACIONES; i++)
+    {
+        if (calculadora->operaciones[i].operador == operador)
+        {
+            operacion = &calculadora->operaciones[i];
+            break;
+        }
+    }
+}
+
 /* === Private function implementation ========================================================= */
+
+calculadora_t CrearCalculadora(void)
+{
+    calculadora_t calculadora = malloc(sizeof(struct calculadora_s));
+
+    if (calculadora)
+    {
+        memset(calculadora, 0, sizeof(struct calculadora_s));
+    }
+
+    return calculadora;
+}
+
+bool AgregarOperacion(calculadora_t calculadora, char operador, funciont_t funcion)
+{
+    operacion_t operacion = BuscarOperacion(calculadora, 0);
+
+    if ((operacion) && !BuscarOperacion(calculadora, operador))
+    {
+        operacion->operador = operador;
+        operacion->funcion = funcion;
+    }
+
+    return (operacion != NULL);
+}
+
+int Calcular(calculadora_t calculadora, char * cadena)
+{
+    int a, b;
+    char operador;
+    int resultado = 0;
+
+    for (int i = 0; i < strlen(cadena); i++)
+    {
+        if (cadena[i] < '0')
+        {
+            a = atoi(cadena);
+            operador = cadena[i];
+            b = atoi(cadena + i + 1);
+        }
+    }
+
+    operacion_t operacion = BuscarOperacion(calculadora, operador);
+
+    if (operacion)
+    {
+        resultado = operacion->funcion(a, b);
+    }
+
+    return resultado;
+}
 
 /* === Public function implementation ========================================================== */
 

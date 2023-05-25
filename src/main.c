@@ -39,12 +39,35 @@ SPDX-License-Identifier: MIT
 /* === Private variable declarations =========================================================== */
 
 /* === Private function declarations =========================================================== */
-
+int suma(int a, int b);
+int resta(int a, int b);
+int multiplicacion(int a, int b);
+int division(int a, int b);
 /* === Public variable definitions ============================================================= */
 
 /* === Private variable definitions ============================================================ */
 
 /* === Private function implementation ========================================================= */
+
+int suma(int a, int b)
+{
+    return a + b;
+}
+
+int resta(int a, int b)
+{
+    return a - b;
+}
+
+int multiplicacion(int a, int b)
+{
+    return a * b;
+}
+
+int division(int a, int b)
+{
+    return a / b;
+}
 
 /* === Public function implementation ========================================================== */
 
@@ -70,26 +93,6 @@ int main(void)
 
     resultado = Calcular(calculadora, "4/2");
     printf("La división de 4 y 2 es: %i\r\n", resultado);
-}
-
-int suma(int a, int b)
-{
-    return a + b;
-}
-
-int resta(int a, int b)
-{
-    return a - b;
-}
-
-int multiplicacion(int a, int b)
-{
-    return a * b;
-}
-
-int division(int a, int b)
-{
-    return a / b;
 }
 /* === End of documentation ==================================================================== */
 
