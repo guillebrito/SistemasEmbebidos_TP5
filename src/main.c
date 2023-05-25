@@ -30,6 +30,7 @@ SPDX-License-Identifier: MIT
 /* === Headers files inclusions =============================================================== */
 
 #include "calculadora.h"
+#include <stdio.h>
 
 /* === Macros definitions ====================================================================== */
 
@@ -47,6 +48,47 @@ SPDX-License-Identifier: MIT
 
 /* === Public function implementation ========================================================== */
 
+int main(void)
+{
+    int resultado;
+
+    calculadora_t calculadora = CrearCalculadora();
+
+    AgregarOperacion(calculadora, '+', suma);
+    AgregarOperacion(calculadora, '-', resta);
+    AgregarOperacion(calculadora, '*', multiplicacion);
+    AgregarOperacion(calculadora, '/', division);
+
+    Calcular(calculadora, "4+2");
+    printf("La suma de 4 y 2 es: %i\r\n");
+
+    Calcular(calculadora, "4-2");
+    printf("La resta de 4 y 2 es: %i\r\n");
+
+    Calcular(calculadora, "4*2");
+    printf("La multiplicación de 4 y 2 es: %i\r\n");
+
+    Calcular(calculadora, "4/2");
+    printf("La división de 4 y 2 es: %i\r\n");
+}
+
+int suma(int a, int b)
+{
+    return a + b;
+}
+
+int resta(int a, int b)
+{
+    return a - b;
+}
+int multiplicacion(int a, int b)
+{
+    return a * b;
+}
+int division(int a, int b)
+{
+    return a / b;
+}
 /* === End of documentation ==================================================================== */
 
 /** @} End of module definition for doxygen */
