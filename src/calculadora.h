@@ -55,7 +55,7 @@ extern "C"
 
     calculadora_t CrearCalculadora(void);
     bool AgregarOperacion(calculadora_t calculadora, char operador, funciont_t funcion);
-    int Calcular(calculadora_t calculadora, char * cadena)
+    int Calcular(calculadora_t calculadora, char * cadena);
 
     /* === End of documentation ==================================================================== */
 

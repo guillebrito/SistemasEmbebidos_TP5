@@ -59,17 +59,17 @@ int main(void)
     AgregarOperacion(calculadora, '*', multiplicacion);
     AgregarOperacion(calculadora, '/', division);
 
-    Calcular(calculadora, "4+2");
-    printf("La suma de 4 y 2 es: %i\r\n");
+    resultado = Calcular(calculadora, "4+2");
+    printf("La suma de 4 y 2 es: %i\r\n", resultado);
 
-    Calcular(calculadora, "4-2");
-    printf("La resta de 4 y 2 es: %i\r\n");
+    resultado = Calcular(calculadora, "4-2");
+    printf("La resta de 4 y 2 es: %i\r\n", resultado);
 
-    Calcular(calculadora, "4*2");
-    printf("La multiplicación de 4 y 2 es: %i\r\n");
+    resultado = Calcular(calculadora, "4*2");
+    printf("La multiplicación de 4 y 2 es: %i\r\n", resultado);
 
-    Calcular(calculadora, "4/2");
-    printf("La división de 4 y 2 es: %i\r\n");
+    resultado = Calcular(calculadora, "4/2");
+    printf("La división de 4 y 2 es: %i\r\n", resultado);
 }
 
 int suma(int a, int b)
@@ -81,10 +81,12 @@ int resta(int a, int b)
 {
     return a - b;
 }
+
 int multiplicacion(int a, int b)
 {
     return a * b;
 }
+
 int division(int a, int b)
 {
     return a / b;

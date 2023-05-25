@@ -30,6 +30,9 @@ SPDX-License-Identifier: MIT
 /* === Headers files inclusions =============================================================== */
 
 #include "calculadora.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /* === Macros definitions ====================================================================== */
 
