@@ -36,10 +36,6 @@ SPDX-License-Identifier: MIT
 
 /* === Macros definitions ====================================================================== */
 
-#ifndef OPERACIONES
-#define OPERACIONES 4
-#endif
-
 /* === Private data type declarations ========================================================== */
 
 typedef struct operacion_s * operacion_t;
@@ -70,8 +66,7 @@ operacion_t BuscarOperacion(calculadora_t calculadora, char operador)
 
     if (calculadora->operaciones != NULL)
     {
-        for (operacion_t actual = calculadora->operaciones; actual->siguiente != NULL;
-             actual = actual->siguiente)
+        for (operacion_t actual = calculadora->operaciones; actual != NULL; actual = actual->siguiente)
         {
             if (actual->operador == operador)
             {
