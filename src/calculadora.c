@@ -42,17 +42,20 @@ SPDX-License-Identifier: MIT
 
 /* === Private data type declarations ========================================================== */
 
-typedef struct operacion_s
-{
-    char operador;
-    funciont_t funcion;
-} * operacion_t;
+typedef struct operacion_s * operacion_t;
 
 /* === Private variable declarations =========================================================== */
 
+struct operacion_s
+{
+    char operador;
+    funciont_t funcion;
+    operacion_t siguiente;
+};
+
 struct calculadora_s
 {
-    struct operacion_s operaciones[OPERACIONES];
+    operacion_t operaciones;
 };
 
 /* === Private function declarations =========================================================== */
@@ -63,16 +66,22 @@ struct calculadora_s
 
 operacion_t BuscarOperacion(calculadora_t calculadora, char operador)
 {
-    operacion_t operacion = NULL;
+    operacion_t resultado = NULL;
 
-    for (int i = 0; i < OPERACIONES; i++)
+    if (calculadora->operaciones != NULL)
     {
-        if (calculadora->operaciones[i].operador == operador)
+        for (operacion_t actual = calculadora->operaciones; actual->siguiente != NULL;
+             actual = actual->siguiente)
         {
-            operacion = &calculadora->operaciones[i];
-            break;
+            if (actual->operador == operador)
+            {
+                resultado = actual;
+                break;
+            }
         }
     }
+
+    return resultado;
 }
 
 /* === Private function implementation ========================================================= */
@@ -81,7 +90,7 @@ calculadora_t CrearCalculadora(void)
 {
     calculadora_t calculadora = malloc(sizeof(struct calculadora_s));
 
-    if (calculadora)
+    if (calculadora != NULL)
     {
         memset(calculadora, 0, sizeof(struct calculadora_s));
     }
@@ -91,12 +100,14 @@ calculadora_t CrearCalculadora(void)
 
 bool AgregarOperacion(calculadora_t calculadora, char operador, funciont_t funcion)
 {
-    operacion_t operacion = BuscarOperacion(calculadora, 0);
+    operacion_t operacion = malloc(sizeof(struct operacion_s));
 
-    if ((operacion) && !BuscarOperacion(calculadora, operador))
+    if (operacion && !BuscarOperacion(calculadora, operador))
     {
         operacion->operador = operador;
         operacion->funcion = funcion;
+        operacion->siguiente = calculadora->operaciones;
+        calculadora->operaciones = operacion;
     }
 
     return (operacion != NULL);
@@ -115,6 +126,7 @@ int Calcular(calculadora_t calculadora, char * cadena)
             a = atoi(cadena);
             operador = cadena[i];
             b = atoi(cadena + i + 1);
+            break;
         }
     }
 
