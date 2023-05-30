@@ -22,12 +22,10 @@ SPDX-License-Identifier: MIT
 #ifndef CALCULADORA_H
 #define CALCULADORA_H
 
-/** \brief Brief description of the file
+/** \brief Declaraciones públicas del módulo calculadora
  **
- ** Full file description
- **
- ** \addtogroup name Module denomination
- ** \brief Brief description of the module
+ ** \addtogroup calculadora Calculadora
+ ** \brief Módulo para el uso de la calculadora.
  ** @{ */
 
 /* === Headers files inclusions ================================================================ */
@@ -45,16 +43,49 @@ extern "C"
     /* === Public macros definitions =============================================================== */
 
     /* === Public data type declarations =========================================================== */
-
+    /**
+     * @brief Puntero a la etructura @ref calculadora_s
+     *
+     * Este puntero apunta a la estructura que describe a la calculadora.
+     */
     typedef struct calculadora_s * calculadora_t;
+
+    /**
+     * @brief Puntero a funciones
+     *
+     * Este puntero apunta a una funcion del tipo int que recibe como parametros dos datos tipo int.
+     */
     typedef int (*funciont_t)(int, int);
 
     /* === Public variable declarations ============================================================ */
 
     /* === Public function declarations ============================================================ */
 
+    /**
+     * @brief Función para crear una nueva calculadora.
+     *
+     * @return calculadora_t Puntero a la calculadora creada.
+     */
     calculadora_t CrearCalculadora(void);
+
+    /**
+     * @brief Función para agregar una nueva operación a la calculadora.
+     *
+     * @param calculadora Puntero a la calculadora.
+     * @param operador Operador de la operación.
+     * @param funcion Puntero a la función que realiza la operación.
+     * @return true La operación fue agregada.
+     * @return false La operación no fue agregada.
+     */
     bool AgregarOperacion(calculadora_t calculadora, char operador, funciont_t funcion);
+
+    /**
+     * @brief Calcula la operación ingresada.
+     *
+     * @param calculadora Puntero a la calculadora.
+     * @param cadena Operación a calcular.
+     * @return int Resultado de la operación.
+     */
     int Calcular(calculadora_t calculadora, char * cadena);
 
     /* === End of documentation ==================================================================== */

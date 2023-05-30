@@ -19,12 +19,10 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 SPDX-License-Identifier: MIT
 *************************************************************************************************/
 
-/** \brief Brief description of the file
+/** \brief Trabajo práctico 5
  **
- ** Full file description
- **
- ** \addtogroup name Module denomination
- ** \brief Brief description of the module
+ ** \addtogroup tp5 TP5
+ ** \brief Enseña operaciones a una calculadora y las prueba.
  ** @{ */
 
 /* === Headers files inclusions =============================================================== */

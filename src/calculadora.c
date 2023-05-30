@@ -18,15 +18,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 SPDX-License-Identifier: MIT
 *************************************************************************************************/
-
-/** \brief Brief description of the file
- **
- ** Full file description
- **
- ** \addtogroup name Module denomination
- ** \brief Brief description of the module
- ** @{ */
-
 /* === Headers files inclusions =============================================================== */
 
 #include "calculadora.h"
@@ -136,7 +127,3 @@ int Calcular(calculadora_t calculadora, char * cadena)
 }
 
 /* === Public function implementation ========================================================== */
-
-/* === End of documentation ==================================================================== */
-
-/** @} End of module definition for doxygen */
